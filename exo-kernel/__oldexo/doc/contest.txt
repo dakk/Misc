@@ -1,0 +1,52 @@
+$(Exo) e' un sasos (single address space os) basato sul modello degli 
+exo-kernel.
+
+
+
+
+
+Questo progetto nasce con l'idea di creare un sistema operativo a singolo 
+spazio di indirizzi, basato su una mia idea di exo-kernel, di simulazione
+della natura umana e alle teorie del comunismo libertario.
+
+I diversi task in esecuzione nel sistema sono gli individui della societa'
+(il computer), mentre il kernel, possiamo paragonarlo alla natura, ed ha 
+il solo scopo di creare i task (nascita di individui), farli terminare 
+(morte), ucciderne altri nel caso sia necessario (kill); il kernel permette 
+anche di allocare e deallocare risorse (che possiamo paragonare al mezzo di 
+sostentamento per la vita degli individui).
+Le risorse hardware (mezzi di produzione) sono gestite interamente dai task,
+senza nessun controllo da  parte del kernel. Nasce cosi' la necessita' di
+implementare delle tecniche di gestione proprie di ogni individuo, non
+subordinate da qualche entita' gerarchicamente piu' alta.
+I task, hanno a disposizione delle informazioni riguardo l'hardware, passate
+dal bootloader, una specie di genoma ereditario.
+Non esiste  il concetto di gerarchia dei processi, il fork crea nuovi task
+senza preoccuparsi di indicare chi l'ha creato.
+
+
+
+
+
+
+Insieme al kernel vero e proprio, viene compilato anche libos.a, la libreria
+di sistema contenente tutti i driver, fs, gestore del fs, gestore della rete. 
+Tramite objdump, viene creato un file .h con delle define contenenti gli
+indirizzi delle varie funzioni di libos. 
+Mediante la compilazione di un wrapper, e l'utilizzo di esso all'interno delle
+applicazioni, sara' possibile utilizzare le funzioni di libos dentro altri
+programmi, senza dover compilare per forza tutta la libreria all'interno.
+
+Ma nell'idea di base di un exo-kernel non c'e' la caratteristica che prevede
+di implementare diverse libos? (Presumo senza ricompilare il kernel).
+Potrei mettere in libk le chiamate del kernel, ed in libos le chiamate alle
+f di libreria.
+Oppure in libk tutti i driver e le chiamate al kernel, ed in libos il resto.
+
+Il makefile di libos produrra' due a archivi. _libos.a, che contiene tutte le
+funzioni implementate che andranno a risiedere nel kernel, e libos.a, che
+sara' solo un wrapper per tutte le funzioni che risiedono nel kernel.
+
+
+LibOS puo' essere divisa in varie parti, a seconda del livello di astrazione
+voluto.

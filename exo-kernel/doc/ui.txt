@@ -1,0 +1,61 @@
+Ui
+
+Nella libos e' presente anche un user interface engine orientato agli
+oggetti, ma scritto in C per la possibilita' di ottimizzazione che il
+C offre. Nella libos quindi, ci saranno delle primitive per creare finestre,
+assegnarle ad un desktop, aggiungere widget, impostare proprieta' e
+callback e cose di questo genere.
+
+Un processo attivato all'avvio del sistema, si occupera' di prendere la
+lista delle finestre dalla memoria condivisa di libos, e renderizzarle.
+
+
+Il framework permette di creare l'interfaccia localmente nella memoria
+del programma. Con alcune chiamate e' possibile aggiungerla al ciclo di
+rendering o rimuoverla.
+
+Gestione degli eventi:
+Ad ogni widget si puo' assegnare un handler per un determinato evento
+con setHandler
+
+Widgets (message):
+	setDefaultSize(unsigned, unsigned)
+	setExpandable(unsigned e)
+	setVisible(unsigned e)
+	setHandler(widget_t *w, event_t event, (void
+
+
+	Button(char *label)
+		setImage()
+		setLabel()
+	
+	SliderButton(unsigned min, unsigned max, unsigned step)
+		setStep(
+
+		
+
+	Tab(unsigned size)
+		setLabel(unsigned section, char *label)
+		addBox(unsigned section, Box *b)
+		
+	Window
+		addBox(Box *b)
+		setDecorated(unsigned e)
+
+	Box
+		setOrientation(Orientation o)
+		addWidget(Widget *w);
+
+	Entry
+
+	Menu
+
+	Text
+
+	Image(char *path)
+		setImage(char *path)
+	
+	Label
+		setText(char *)
+		char *getText()
+

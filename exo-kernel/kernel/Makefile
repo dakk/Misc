@@ -1,0 +1,62 @@
+ARCH=hlinux_x86
+ARCH=x86
+
+CFLAGS		=	-I. -Wall
+CXXFLAGS	=	-lang=c++ -fno-rtti
+
+ifeq ($(ARCH),hlinux_x86)
+	ARCH_DIR=arch/hlinux_x86
+	ARCH_SOURCES=$(ARCH_DIR)/timer.o $(ARCH_DIR)/io.o $(ARCH_DIR)/arch.o $(ARCH_DIR)/kvideo.o
+	LDFLAGS= -lpthread
+	CFLAGS +=
+	LD=gcc 
+endif
+
+ifeq ($(ARCH),x86)
+	ARCH_DIR=arch/x86
+	ARCH_SOURCES=$(ARCH_DIR)/boot.o $(ARCH_DIR)/dt.o $(ARCH_DIR)/timer.o \
+		$(ARCH_DIR)/io.o $(ARCH_DIR)/calls.o $(ARCH_DIR)/arch.o $(ARCH_DIR)/kvideo.o
+	LDFLAGS=-T$(ARCH_DIR)/link.ld -static
+	CFLAGS += -Wno-write-strings -nostdlib -nostartfiles -ffreestanding \
+				-fno-stack-protector -nostdlib -nostdinc -fno-builtin -nodefaultlibs -fno-exceptions
+
+endif
+
+
+SOURCES=$(ARCH_SOURCES) core/elf.o core/mm.o core/main.o core/stdio.o core/sched.o 
+
+BIN=$(ARCH_DIR)/kernel
+
+CXXFLAGS += $(CFLAGS)
+ASFLAGS=-felf
+ASM=nasm
+CC=gcc
+CPP=g++
+#LDFLAGS=-static
+
+all: $(SOURCES) link
+
+iso:
+	mkdir isofiles
+	mkdir isofiles/boot/
+	mkdir isofiles/boot/grub/
+	cp arch/x86/boot/stage2_eltorito isofiles/boot/grub
+	cp arch/x86/kernel isofiles/kernel
+	cp arch/x86/boot/menu.lst isofiles/boot/grub
+	mkisofs -R -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -o arch/x86/image.iso isofiles
+	rm -r isofiles
+test:
+	qemu -cdrom arch/x86/image.iso -boot d -m 20
+
+
+.s.o:
+	$(ASM) $(ASFLAGS) $<
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+.cpp.o:
+	$(CPP) $(CXXFLAGS) -c $< -o $@
+link:
+	$(LD) $(LDFLAGS) -o $(BIN) $(SOURCES) ../app/apps.a ../lib/libos/libos.a
+clean:
+	rm $(SOURCES)
+

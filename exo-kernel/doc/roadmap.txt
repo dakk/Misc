@@ -1,0 +1,52 @@
+Kernel:	
+	x x86 support 32bit								[100%]
+	x small stdio									[100%]
+	x schedule handling								[ 30%]
+		- elf32										[ 15%]
+			- relocation							[  1%]
+		- signal									[  0%]
+		x task exit handling						[100%]
+		x task switching							[100%]
+		- simmetric multiprocessor					[  0%]
+	x memory manager								[100%]
+		x process memory allocation					[100%]
+	x start binaries app passed by the bootloader	[100%]
+	x basic video io								[100%]
+	- arch
+		x x86 support								[ 80%]
+			- automatic creation of modules list	[  0%]
+			- simmetric multiprocessor				[  0%]
+		- x86_64 support							[  0%]
+		- ppc32 support								[  0%]
+		x host-linux-x86							[ 80%]
+
+LibOS: 
+	x write the structure of the libos              [100%]
+		x decide a common structure for drivers		[100%]
+		x realize a solid calling wrapper			[100%]
+	- mutex											[  0%]
+	- drivers										[  0%]
+		x vesa										[100%]
+		- mouse 									[  0%]
+		- pci bus									[  0%]
+		- keyboard									[  0%]
+		- atapi										[  0%]
+	x system wrapping								[100%]
+	x vfs 											[ 90%]
+		- tarfs										[ 10%]
+	- network 										[  0%]
+	- ui											[  0%]
+		x window									[ 80%]
+		x label										[ 80%]
+		- button									
+		- entry
+		- box
+
+Apps: 
+	- vesa bootsplash								[ 10%]
+	- vesa window manager							[ 30%]
+	- file explorer									[  0%]
+
+
+Experiment:
+	- another kernel running on top of this
