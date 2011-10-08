@@ -1,0 +1,8 @@
+timeout 1
+
+
+title	ObjectiveC Kernel
+	root (cd)
+	kernel /kernel
+	boot	
+
