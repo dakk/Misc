@@ -1,0 +1,40 @@
+/*
+ * main.cpp
+ *
+ *  Created on: Aug 20, 2011
+ *      Author: Davide Gessa
+ */
+#include <string.h>
+#include <stdio.h>
+
+#include "VideoTest.h"
+#include "EdgeTest.h"
+
+int main(int argc, char **argv)
+{
+	if(argc < 2)
+	{
+		printf("Use: %s [video || edge]\n", argv[0]);
+		return 0;
+	}
+
+	int err;
+
+	if(strcmp(argv[1], "video") == 0)
+	{
+		VideoTest *vt = new VideoTest();
+		err = vt->Run();
+		delete vt;
+	}
+
+	else if(strcmp(argv[1], "edge") == 0)
+	{
+		EdgeTest *vt = new EdgeTest();
+		err = vt->Run();
+		delete vt;
+	}
+	
+	printf("Test executed with error code: %d\n", err);
+
+	return 0;
+}

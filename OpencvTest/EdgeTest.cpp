@@ -1,0 +1,78 @@
+/*
+ * EdgeTest.cpp
+ *
+ *  Created on: Aug 20, 2011
+ *      Author: Davide Gessa
+ */
+
+#include "EdgeTest.h"
+
+EdgeTest::EdgeTest() : Test("Realtime Edge Detect")
+{
+	
+}
+
+EdgeTest::~EdgeTest()
+{
+}
+
+
+
+
+
+int EdgeTest::Run()
+{
+	CvCapture* capture;
+    IplImage* frame;
+
+	// Initialize the capture device
+	capture = cvCaptureFromCAM(-1);
+
+	if(!capture)
+    {
+		ShowError("Cannot find webcam");
+		return -1;
+	}
+	
+	cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH, 700);
+	cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT, 700);
+	cvSetCaptureProperty(capture, CV_CAP_PROP_CONTRAST, 0);
+
+
+	
+	// Create windows to display results
+    cvNamedWindow("Capture", 1);
+
+
+	for(;;)
+    {
+		// Retrive data from webcam and copy the frame to frame_mod
+		if(!cvGrabFrame(capture))
+            break;
+
+		frame = cvRetrieveFrame(capture);
+
+        if(!frame)
+            break;
+			
+
+
+		// Show image on capture screen
+		cvFlip(frame, frame, -1);
+		cvShowImage("Capture", frame);
+
+
+			
+		// Esc key
+        if(cvWaitKey(10) >= 0)
+            break;
+    }
+
+    cvReleaseCapture(&capture);
+    
+    cvDestroyWindow("EdgeTest");
+    cvDestroyWindow("Capture");
+
+
+    return 0;
+}
