@@ -101,15 +101,37 @@
     <Folder Include="Microsoft.Xna.Framework.Input.Touch\" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Tao.Sdl, Version=1.2.8.1, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.Sdl.dll</Package>
+    </Reference>
+    <Reference Include="Tao.OpenGl.Glu, Version=1.5.0.3, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.OpenGl.Glu.dll</Package>
+    </Reference>
+    <Reference Include="Tao.OpenGl.ExtensionLoader, Version=1.5.0.3, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.OpenGl.ExtensionLoader.dll</Package>
+    </Reference>
+    <Reference Include="Tao.OpenGl, Version=0.0.0.0, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.OpenGl.dll</Package>
+    </Reference>
+    <Reference Include="Tao.OpenAl, Version=1.0.0.2, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.OpenAl.dll</Package>
+    </Reference>
+    <Reference Include="Tao.Ode, Version=0.5.0.1, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.Ode.dll</Package>
+    </Reference>
+    <Reference Include="Tao.Glfw, Version=2.4.2.1, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.Glfw.dll</Package>
+    </Reference>
+    <Reference Include="Tao.FreeGlut, Version=2.2.0.0, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.FreeGlut.dll</Package>
+    </Reference>
+    <Reference Include="Tao.DevIl, Version=1.6.7.0, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.DevIl.dll</Package>
+    </Reference>
+    <Reference Include="Tao.Cg, Version=1.2.1.3, Culture=neutral">
+      <Package>/home/dak/Svn/Tao-1.2.0-1/lib/Tao.Cg.dll</Package>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e" />
-    <Reference Include="Tao.Platform.X11, Version=1.0.0.0, Culture=neutral, PublicKeyToken=701104b2da67a104" />
-    <Reference Include="Tao.Platform.Windows, Version=1.0.0.5, Culture=neutral, PublicKeyToken=701104b2da67a104" />
-    <Reference Include="Tao.OpenGl, Version=2.1.0.12, Culture=neutral, PublicKeyToken=1ca010269a4501ef" />
-    <Reference Include="Tao.OpenAl, Version=1.1.0.1, Culture=neutral, PublicKeyToken=a7579dda88828311" />
-    <Reference Include="Tao.FreeType, Version=2.3.5.0, Culture=neutral, PublicKeyToken=e499629dc69cd531" />
-    <Reference Include="Tao.FreeGlut, Version=2.4.0.2, Culture=neutral, PublicKeyToken=6e602a6ad6c0d06d" />
-    <Reference Include="Tao.FFmpeg, Version=0.4.9.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e" />
-    <Reference Include="Tao.DevIl, Version=1.6.8.3, Culture=neutral, PublicKeyToken=7ec4053013524957" />
+    <Reference Include="System.Core" />
   </ItemGroup>
 </Project>

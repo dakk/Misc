@@ -46,7 +46,7 @@ namespace Microsoft.Xna.Framework.Content
 				Console.Write("(Texture2D)... ");
 				
 				Il.ilInit();
-				id = Il.ilGenImage();
+				Il.ilGenImages(1, out id);
 				Il.ilBindImage(id);
 				if( ( Il.ilLoadImage(path) ) && 
 				    (Il.ilConvertImage(Il.IL_RGB, Il.IL_UNSIGNED_BYTE) ))
@@ -85,7 +85,7 @@ namespace Microsoft.Xna.Framework.Content
 				}
 				else 
 				{
-					Il.ilDeleteImage(id);
+					Il.ilDeleteImages(1, ref id);
 					Console.Write("Error\n");
 				}
 			}
