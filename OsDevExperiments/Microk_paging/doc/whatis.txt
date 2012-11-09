@@ -1,0 +1,40 @@
+*Microk* is a pure microkernel oriented system.
+The kernel is about 2000 lines of code and it offers:
+	- hardware abstraction
+	- task functionality
+	- message based ipc
+	- virtual memory support
+	
+These functionality are wrapped with few syscalls.
+
+
+The system functionality (vfs, drivers, networking) is divided in servers;
+each server work as a task, and internal feature of the server are task
+each others. 
+
+The device server offers a wrapper for freebsd drivers, with a tool
+to trasform a freebsd driver module in a *mc* driver task.
+
+You can think that in a normal session there're to many system tasks in 
+executions, but the system start only necessary services.
+
+There is a system library that comunicate with each server to ask for
+a service.
+
+The point of strenght of the system is that it supports freebsd drivers
+and is pure microkernel. We hope that with some work it will be a full
+usable system.
+
+The system is posix compliant, and will implement a package system like
+portage or pkgsrc.
+
+
+
+Drivers:
+	Each driver have to create a structure that contains some callbacks;
+	each driver have a main() that create this structure, and call
+	a loop with a library function that receive and handle task messages
+	
+	struct callbacks_t drv_cb { .open=..., .read=..., ... };
+	
+	main(){ initialize_driver(); if(plugged()) driver_loop(drv_cb); }

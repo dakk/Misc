@@ -1,0 +1,10 @@
+Log created: 2012-10-11T12:25:37.814515000Z
+Executable: /usr/lib64/virtualbox/VirtualBox
+Arg[0]: /usr/lib64/virtualbox/VirtualBox
+Arg[1]: --comment
+Arg[2]: Test
+Arg[3]: --startvm
+Arg[4]: 48baf5fc-92f1-450c-a7a0-779e84a760da
+Arg[5]: --no-startvm-errormsgbox
+fatal error in recompiler cpu: Trying to execute code with memory type addr_code=00000000f000b020 addend=00007f3543061000 at 00000000f000bb79. (iHandlerMemType=0x38 iMMIOMemType=0x30)
+
